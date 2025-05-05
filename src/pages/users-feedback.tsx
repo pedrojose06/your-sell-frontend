@@ -7,3 +7,9 @@ const UsersFeedback = () => {
   )
 }
 export default UsersFeedback
+
+export const getConfig = async () => {
+  return {
+    render: 'static',
+  } as const
+}

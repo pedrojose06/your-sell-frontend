@@ -1,21 +1,14 @@
-import { Link } from 'waku';
-
-import { Counter } from '../components/counter';
+import ProductsList from '../features/products/ProductsList/ProductsList'
 
 export default async function HomePage() {
-  const data = await getData();
+  const data = await getData()
 
   return (
     <div>
       <title>{data.title}</title>
-      <h1 className="text-4xl font-bold tracking-tight">{data.headline}</h1>
-      <p>{data.body}</p>
-      <Counter />
-      <Link to="/about" className="mt-4 inline-block underline">
-        About page
-      </Link>
+      <ProductsList />
     </div>
-  );
+  )
 }
 
 const getData = async () => {
@@ -23,13 +16,13 @@ const getData = async () => {
     title: 'Wakuuu',
     headline: 'Wakuq',
     body: 'Hello world!',
-  };
+  }
 
-  return data;
-};
+  return data
+}
 
 export const getConfig = async () => {
   return {
     render: 'static',
-  } as const;
-};
+  } as const
+}

@@ -7,12 +7,17 @@ import type { PathsForPages, GetConfigResponse } from 'waku/router';
 import type { getConfig as About_getConfig } from './pages/about';
 // prettier-ignore
 import type { getConfig as Index_getConfig } from './pages/index';
+// prettier-ignore
+import type { getConfig as Products_getConfig } from './pages/products';
+// prettier-ignore
+import type { getConfig as UsersFeedback_getConfig } from './pages/users-feedback';
 
 // prettier-ignore
 type Page =
 | ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
 | ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>)
-| { path: '/users-feedback'; render: 'dynamic' };
+| ({ path: '/products' } & GetConfigResponse<typeof Products_getConfig>)
+| ({ path: '/users-feedback' } & GetConfigResponse<typeof UsersFeedback_getConfig>);
 
 // prettier-ignore
 declare module 'waku/router' {
