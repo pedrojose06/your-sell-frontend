@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="p-6 lg:fixed lg:bottom-0 lg:left-0">
+    <footer className="p-6 lg:bottom-0 lg:left-0">
       <div>
         visit{' '}
         <a
@@ -14,5 +14,5 @@ export const Footer = () => {
         to learn more
       </div>
     </footer>
-  );
-};
+  )
+}
