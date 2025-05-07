@@ -41,9 +41,3 @@ const ProductsList = () => {
   )
 }
 export default ProductsList
-
-export const getConfig = async () => {
-  return {
-    render: 'static',
-  } as const
-}

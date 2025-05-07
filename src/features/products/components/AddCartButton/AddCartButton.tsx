@@ -44,6 +44,7 @@ const AddCartButton = () => {
 
       <button
         type="button"
+        onClick={() => alert(`Added ${quantity} items to cart`)}
         className="w-32 flex-1 rounded bg-amber-200 px-4 py-2 text-black hover:cursor-pointer hover:bg-amber-300"
       >
         Add to Cart

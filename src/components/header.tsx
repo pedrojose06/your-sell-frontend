@@ -1,7 +1,14 @@
+'use client'
+
+import { lazy, useState } from 'react'
 import { IoCartOutline } from 'react-icons/io5'
 import { Link } from 'waku'
 
+const ShoppingCart = lazy(() => import('./shopping-cart'))
+
 export const Header = () => {
+  const [openCart, setOpenCart] = useState(false)
+
   return (
     <header className="z-50 flex w-full items-center justify-between gap-4 bg-white p-6 shadow-md lg:fixed lg:top-0 lg:left-0">
       <Link to="/products">
@@ -18,7 +25,11 @@ export const Header = () => {
           <Link to="/users-feedback">Avaliações dos usuários</Link>
         </h2>
       </div>
-      <IoCartOutline className="h-8 w-8 cursor-pointer text-gray-700" />
+      <IoCartOutline
+        className="h-8 w-8 cursor-pointer text-gray-700"
+        onClick={() => setOpenCart(true)}
+      />
+      {openCart && <ShoppingCart open={openCart} setOpen={setOpenCart} />}
     </header>
   )
 }
