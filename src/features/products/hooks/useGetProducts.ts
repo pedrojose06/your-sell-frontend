@@ -14,4 +14,5 @@ const useGetProducts = () => {
     error,
   }
 }
+
 export default useGetProducts

@@ -2,16 +2,10 @@ export const Footer = () => {
   return (
     <footer className="p-6 lg:bottom-0 lg:left-0">
       <div>
-        visit{' '}
-        <a
-          href="https://waku.gg/"
-          target="_blank"
-          rel="noreferrer"
-          className="mt-4 inline-block underline"
-        >
-          waku.gg
-        </a>{' '}
-        to learn more
+        <p className="text-center text-gray-500 text-sm">
+          © {new Date().getFullYear()} PEDRO JOSE TRINDADE DE MORAES LTDA. All
+          rights reserved.
+        </p>
       </div>
     </footer>
   )

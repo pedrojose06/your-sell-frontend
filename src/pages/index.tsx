@@ -1,4 +1,4 @@
-import ProductsList from '../features/products/ProductsList/ProductsList'
+import ProductsList from '../features/products/components/ProductsList/ProductsList'
 
 export default async function HomePage() {
   const data = await getData()
