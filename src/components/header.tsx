@@ -10,7 +10,7 @@ export const Header = () => {
   const [openCart, setOpenCart] = useState(false)
 
   return (
-    <header className="z-50 flex w-full items-center justify-between gap-4 bg-white p-6 shadow-md lg:fixed lg:top-0 lg:left-0">
+    <header className="z-20 flex w-full items-center justify-between gap-4 bg-white p-6 shadow-md lg:fixed lg:top-0 lg:left-0">
       <Link to="/products">
         <img src="src/assets/pao.png" alt="Logo" className="h-12 w-14" />
       </Link>

@@ -42,7 +42,7 @@ interface IShoppingCart {
 
 export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={open} onClose={setOpen} className="relative z-50">
       <DialogBackdrop
         transition
         className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out data-closed:opacity-0"
@@ -65,7 +65,7 @@ export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
                       <button
                         type="button"
                         onClick={() => setOpen(false)}
-                        className="-m-2 relative p-2 text-gray-400 hover:text-gray-500"
+                        className="-m-2 relative p-2 text-gray-400 hover:cursor-pointer hover:text-gray-500"
                       >
                         <span className="-inset-0.5 absolute" />
                         <span className="sr-only">Close panel</span>
