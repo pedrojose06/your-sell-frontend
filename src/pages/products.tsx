@@ -1,9 +1,9 @@
 import ProductsList from '../features/products/components/ProductsList/ProductsList'
 
-const Products = () => {
+const ProductsPage = () => {
   return <ProductsList />
 }
-export default Products
+export default ProductsPage
 
 export const getConfig = async () => {
   return {
