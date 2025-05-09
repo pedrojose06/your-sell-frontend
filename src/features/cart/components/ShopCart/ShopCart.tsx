@@ -6,8 +6,7 @@ import {
   DialogTitle,
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { useAtomValue } from 'jotai'
-import { atomShopCartProducts } from '../../atoms/shop-cart'
+import { useShopCartProducts } from '../../hooks/useShopCartProducts'
 
 const products = [
   {
@@ -43,8 +42,8 @@ interface IShoppingCart {
 }
 
 export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
-  const shopCartProducts = useAtomValue(atomShopCartProducts)
-  console.log('shopCartProducts', shopCartProducts)
+  const { cartProducts, totalPrice } = useShopCartProducts()
+
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-50">
       <DialogBackdrop
@@ -81,7 +80,7 @@ export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
                   <div className="mt-8">
                     <div className="flow-root">
                       <ul className="-my-6 divide-y divide-gray-200">
-                        {products.map((product) => (
+                        {cartProducts.map((product) => (
                           <li key={product.id} className="flex py-6">
                             <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
                               <img
@@ -127,7 +126,7 @@ export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
                 <div className="border-gray-200 border-t px-4 py-6 sm:px-6">
                   <div className="flex justify-between font-medium text-base text-gray-900">
                     <p>Subtotal</p>
-                    <p>$262.00</p>
+                    <p>{totalPrice}</p>
                   </div>
                   <p className="mt-0.5 text-gray-500 text-sm">
                     Shipping and taxes calculated at checkout.
