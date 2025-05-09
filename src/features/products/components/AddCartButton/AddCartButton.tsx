@@ -1,8 +1,15 @@
 'use client'
 import { useState } from 'react'
+import { atomShopCartProducts } from '../../../cart/atoms/shop-cart'
+import { useAtom } from 'jotai'
 
-const AddCartButton = () => {
+interface IAddCartButton {
+  productId: number
+}
+
+const AddCartButton = ({ productId }: IAddCartButton) => {
   const [quantity, setQuantity] = useState(0)
+  const [shopCart, setShopCart] = useAtom(atomShopCartProducts)
 
   const handleTypeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -13,6 +20,25 @@ const AddCartButton = () => {
     if (!Number.isNaN(parsedValue)) {
       setQuantity(parsedValue)
     }
+  }
+
+  const addProductToCart = () => {
+    if (quantity <= 0) return
+    const existingProduct = shopCart.find((item) => item.id === productId)
+    if (existingProduct) {
+      setShopCart((prev) =>
+        prev.map((item) =>
+          item.id === productId
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        )
+      )
+      setQuantity(0)
+      return
+    }
+
+    setShopCart((prev) => [...prev, { id: productId, quantity }])
+    setQuantity(0)
   }
 
   return (
@@ -44,7 +70,7 @@ const AddCartButton = () => {
 
       <button
         type="button"
-        onClick={() => alert(`Added ${quantity} items to cart`)}
+        onClick={addProductToCart}
         className="w-32 flex-1 rounded bg-amber-200 px-4 py-2 text-black hover:cursor-pointer hover:bg-amber-300"
       >
         Add to Cart

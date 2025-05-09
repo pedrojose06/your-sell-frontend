@@ -1,6 +1,6 @@
 'use client'
 
-import { products } from '../../constants'
+import { products } from '../../constants/products'
 import useGetProducts from '../../hooks/useGetProducts'
 import AddCartButton from '../AddCartButton/AddCartButton'
 
@@ -32,7 +32,7 @@ const ProductsList = () => {
                   {product.price}
                 </p>
               </a>
-              <AddCartButton />
+              <AddCartButton productId={product.id} />
             </div>
           ))}
         </div>

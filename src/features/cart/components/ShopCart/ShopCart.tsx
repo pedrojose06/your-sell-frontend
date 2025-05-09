@@ -6,6 +6,8 @@ import {
   DialogTitle,
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import { useAtomValue } from 'jotai'
+import { atomShopCartProducts } from '../../atoms/shop-cart'
 
 const products = [
   {
@@ -41,6 +43,8 @@ interface IShoppingCart {
 }
 
 export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
+  const shopCartProducts = useAtomValue(atomShopCartProducts)
+  console.log('shopCartProducts', shopCartProducts)
   return (
     <Dialog open={open} onClose={setOpen} className="relative z-50">
       <DialogBackdrop
@@ -97,9 +101,6 @@ export default function ShoppingCart({ open, setOpen }: IShoppingCart) {
                                   </h3>
                                   <p className="ml-4">{product.price}</p>
                                 </div>
-                                <p className="mt-1 text-gray-500 text-sm">
-                                  {product.color}
-                                </p>
                               </div>
                               <div className="flex flex-1 items-end justify-between text-sm">
                                 <p className="text-gray-500">
