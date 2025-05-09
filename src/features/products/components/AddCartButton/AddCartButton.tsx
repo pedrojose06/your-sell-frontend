@@ -1,14 +1,17 @@
 'use client'
-import { useState } from 'react'
+import { lazy, useState } from 'react'
 import { atomShopCartProducts } from '../../../cart/atoms/shop-cart'
 import { useAtom } from 'jotai'
 
+const Toast = lazy(() => import('../../../../components/toast'))
 interface IAddCartButton {
   productId: number
 }
 
 const AddCartButton = ({ productId }: IAddCartButton) => {
   const [quantity, setQuantity] = useState(0)
+  const [showToast, setShowToast] = useState(false)
+  const [toastKey, setToastKey] = useState(0)
   const [shopCart, setShopCart] = useAtom(atomShopCartProducts)
 
   const handleTypeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,11 +37,15 @@ const AddCartButton = ({ productId }: IAddCartButton) => {
         )
       )
       setQuantity(0)
+      setToastKey((k) => k + 1)
+      setShowToast(true)
       return
     }
 
     setShopCart((prev) => [...prev, { id: productId, quantity }])
     setQuantity(0)
+    setToastKey((k) => k + 1)
+    setShowToast(true)
   }
 
   return (
@@ -75,6 +82,15 @@ const AddCartButton = ({ productId }: IAddCartButton) => {
       >
         Add to Cart
       </button>
+      {showToast && (
+        <Toast
+          key={toastKey}
+          message="Produto adicionado ao carrinho com sucesso!"
+          duration={3000}
+          onClose={() => setShowToast(false)}
+          type="success"
+        />
+      )}
     </div>
   )
 }
