@@ -4,7 +4,9 @@ import { lazy, useState } from 'react'
 import { IoCartOutline } from 'react-icons/io5'
 import { Link } from 'waku'
 
-const ShoppingCart = lazy(() => import('./shopping-cart'))
+const ShoppingCart = lazy(
+  () => import('../features/cart/components/ShopCart/ShopCart')
+)
 
 export const Header = () => {
   const [openCart, setOpenCart] = useState(false)
