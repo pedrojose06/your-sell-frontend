@@ -4,11 +4,11 @@ import { atomShopCartProducts } from '../../../cart/atoms/shop-cart'
 import { useAtom } from 'jotai'
 
 const Toast = lazy(() => import('../../../../components/toast'))
-interface IAddCartButton {
+interface IAddCartButton extends React.HTMLProps<HTMLButtonElement> {
   productId: number
 }
 
-const AddCartButton = ({ productId }: IAddCartButton) => {
+const AddCartButton = ({ productId, className = 'w-full' }: IAddCartButton) => {
   const [quantity, setQuantity] = useState(0)
   const [showToast, setShowToast] = useState(false)
   const [toastKey, setToastKey] = useState(0)
@@ -49,7 +49,7 @@ const AddCartButton = ({ productId }: IAddCartButton) => {
   }
 
   return (
-    <div className="mt-4 flex w-full gap-4">
+    <div className={`${className} mt-4 flex gap-4`}>
       <div className="flex max-w-32 items-center ">
         <button
           className="rounded-l-lg border border-gray-300 border-solid bg-gray-200 px-4 py-2 font-bold text-black text-lg hover:cursor-pointer hover:bg-gray-300"
