@@ -8,6 +8,10 @@ import type { getConfig as About_getConfig } from './pages/about';
 // prettier-ignore
 import type { getConfig as Index_getConfig } from './pages/index';
 // prettier-ignore
+import type { getConfig as ProductId_getConfig } from './pages/product/[id]';
+// prettier-ignore
+import type { getConfig as ProductIndex_getConfig } from './pages/product/index';
+// prettier-ignore
 import type { getConfig as Products_getConfig } from './pages/products';
 // prettier-ignore
 import type { getConfig as UsersFeedback_getConfig } from './pages/users-feedback';
@@ -16,6 +20,8 @@ import type { getConfig as UsersFeedback_getConfig } from './pages/users-feedbac
 type Page =
 | ({ path: '/about' } & GetConfigResponse<typeof About_getConfig>)
 | ({ path: '/' } & GetConfigResponse<typeof Index_getConfig>)
+| ({ path: '/product/[id]' } & GetConfigResponse<typeof ProductId_getConfig>)
+| ({ path: '/product' } & GetConfigResponse<typeof ProductIndex_getConfig>)
 | ({ path: '/products' } & GetConfigResponse<typeof Products_getConfig>)
 | ({ path: '/users-feedback' } & GetConfigResponse<typeof UsersFeedback_getConfig>);
 
